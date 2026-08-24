@@ -23,49 +23,59 @@
 </head>
 <body class="h-full bg-slate-950 flex items-center justify-center p-2 sm:p-4">
 
-    <div id="game-container" class="w-full max-w-6xl h-[94vh] max-h-[880px] bg-slate-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-800">
+    <div id="game-container" class="w-full max-w-6xl h-[96vh] sm:h-[94vh] max-h-[880px] bg-slate-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-800">
 
         <!-- ================= START / SETUP SCREEN ================= -->
         <div id="start-screen" class="screen active flex-col items-center justify-center p-6 text-center overflow-y-auto">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-4">
-                Thammasat University • B.A. Media Studies
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
+                BJM Thammasat University • B.A. Media Studies
             </div>
             <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-2">
                 JM 466 <span class="text-blue-500">Digital Strategy</span> Sim
             </h1>
-            <p class="text-slate-400 max-w-xl text-sm sm:text-base mb-6">
-                Step into the shoes of a modern digital strategist. Execute campaigns, manage clients, navigate AI disruption, and solve PR crises.
+            <p class="text-slate-400 max-w-xl text-xs sm:text-sm mb-6 leading-relaxed">
+                Step into the shoes of a modern BJM digital strategist in Bangkok. Manage real client briefs, pitch executive retainers, handle viral crises, and navigate AI disruption.
             </p>
 
-            <div class="w-full max-w-md bg-slate-800/80 p-6 rounded-xl border border-slate-700/60 shadow-xl text-left">
+            <div class="w-full max-w-lg bg-slate-800/80 p-5 sm:p-6 rounded-xl border border-slate-700/60 shadow-xl text-left">
                 <div class="mb-4">
-                    <label for="player-name" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Student / Strategist Name</label>
-                    <input type="text" id="player-name" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium" placeholder="e.g., Pimchanok A.">
+                    <label for="player-name" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">BJM Student / Strategist Name</label>
+                    <input type="text" id="player-name" class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium text-sm" placeholder="e.g., Pimchanok A.">
                 </div>
 
-                <div class="mb-6">
-                    <label for="career-choice" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Choose Starting Career Track</label>
-                    <select id="career-choice" class="w-full px-4 py-3 bg-slate-900 border border-slate-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium">
+                <div class="mb-4">
+                    <label for="career-choice" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Choose Career Track</label>
+                    <select id="career-choice" class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium text-sm">
                         <option value="freelance">Freelance Digital Strategist & Consultant</option>
                         <option value="in-house">In-House Brand Lead (Corporate / Tech)</option>
                         <option value="agency">Digital Marketing Agency Account Lead</option>
                         <option value="creator">Digital Content Creator / Media Entrepreneur</option>
-                        <option value="journalist">Digital Journalist / Investigative Reporter</option>
+                        <option value="journalist">Digital Media Producer & Investigative Analyst</option>
+                    </select>
+                </div>
+
+                <div class="mb-6">
+                    <label for="origin-story" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Strategist Origin & Background</label>
+                    <select id="origin-story" class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium text-sm">
+                        <option value="bjm_student">🎓 Current BJM Senior (Standard JM 466 Track)</option>
+                        <option value="incubator_locked" disabled>🔒 BJM Alum & Tech Founder Track (Future Expansion)</option>
+                        <option value="agency_locked" disabled>🔒 Regional Agency Partner Track (Future Expansion)</option>
+                        <option value="media_lead_locked" disabled>🔒 Senior Policy Fellow Track (Future Expansion)</option>
                     </select>
                 </div>
 
                 <div class="flex gap-3">
-                    <button id="start-game-btn" class="flex-grow bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 px-6 rounded-lg shadow-lg shadow-blue-600/30 transition duration-200">
+                    <button id="start-game-btn" class="flex-grow bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-lg shadow-lg shadow-blue-600/30 transition duration-200 text-sm">
                         Launch Strategic Career
                     </button>
-                    <button id="open-load-start-btn" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-semibold px-4 py-3.5 rounded-lg text-xs transition">
+                    <button id="open-load-start-btn" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-semibold px-4 py-3 rounded-lg text-xs transition">
                         📂 Load Save
                     </button>
                 </div>
             </div>
 
-            <p class="text-xs text-slate-500 mt-6 max-w-md">
-                🎓 <span class="font-semibold text-slate-400">Course Objective:</span> Unlock badges across Digital Audit, SEO, AI Prompting, CRM & Analytics. Pass concept quizzes to claim badges.
+            <p class="text-[11px] text-slate-500 mt-5 max-w-md">
+                🎓 <span class="font-semibold text-slate-400">Course Objective:</span> Master digital strategy concepts across 15 weeks, solve client briefs, and pass concept quizzes to earn verifiable badges.
             </p>
         </div>
 
@@ -73,42 +83,52 @@
         <div id="main-dashboard" class="screen flex-col w-full h-full">
             
             <!-- Top Navigation / Header -->
-            <header class="w-full bg-slate-900/90 border-b border-slate-800 p-3 sm:p-4 flex flex-wrap justify-between items-center gap-2 flex-shrink-0">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-bold text-lg" id="avatar-icon">
+            <header class="w-full bg-slate-900/90 border-b border-slate-800 p-2.5 sm:p-4 flex flex-wrap justify-between items-center gap-2 flex-shrink-0">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-bold text-base sm:text-lg" id="avatar-icon">
                         DS
                     </div>
                     <div>
-                        <div class="flex items-center gap-2">
-                            <h2 id="player-name-display" class="text-base sm:text-lg font-bold text-white"></h2>
-                            <span id="career-badge" class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px] uppercase tracking-wider font-semibold text-blue-400"></span>
+                        <div class="flex items-center gap-1.5 sm:gap-2">
+                            <h2 id="player-name-display" class="text-sm sm:text-lg font-bold text-white"></h2>
+                            <span id="career-badge" class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold text-blue-400"></span>
                         </div>
-                        <p id="career-title-display" class="text-xs text-slate-400"></p>
+                        <p id="career-title-display" class="text-[11px] sm:text-xs text-slate-400 truncate max-w-[160px] sm:max-w-none"></p>
                     </div>
                 </div>
 
-                <div class="flex items-center gap-3 text-right">
+                <div class="flex items-center gap-2 sm:gap-3 text-right">
                     <div>
-                        <div class="flex items-center justify-end gap-1.5">
-                            <p id="date-display" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Semester Week 1</p>
-                            <span id="instructor-cap-tag" class="text-[9px] bg-amber-500/10 text-amber-300 border border-amber-500/30 px-1.5 py-0.2 rounded font-mono">Max Wk 4</span>
+                        <div class="flex items-center justify-end gap-1">
+                            <p id="date-display" class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Semester Week 1</p>
+                            <span id="instructor-cap-tag" class="text-[8px] sm:text-[9px] bg-amber-500/10 text-amber-300 border border-amber-500/30 px-1 sm:px-1.5 py-0.2 rounded font-mono">Max Wk 4</span>
                         </div>
-                        <p id="money-display" class="text-lg sm:text-xl font-bold text-emerald-400 font-mono">$1,500</p>
+                        <p id="money-display" class="text-base sm:text-xl font-bold text-emerald-400 font-mono">$1,500</p>
                     </div>
-                    <button id="open-save-btn" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition">
-                        💾 Save / Load
+                    <button id="open-dossier-btn" class="bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg text-xs font-bold transition">
+                        📩 <span class="hidden sm:inline">Dossiers</span>
                     </button>
-                    <button id="open-badges-btn" class="bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition">
-                        🏆 Badges <span id="badge-count-pill" class="bg-amber-500 text-slate-950 font-black px-1.5 py-0.2 rounded-full text-[10px]">0/15</span>
+                    <button id="open-save-btn" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg text-xs font-bold transition">
+                        💾 <span class="hidden sm:inline">Save</span>
+                    </button>
+                    <button id="open-badges-btn" class="bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg text-xs font-bold flex items-center gap-1 transition">
+                        🏆 <span class="hidden sm:inline">Badges</span> <span id="badge-count-pill" class="bg-amber-500 text-slate-950 font-black px-1.5 py-0.2 rounded-full text-[10px]">0/15</span>
                     </button>
                 </div>
             </header>
 
+            <!-- MOBILE TAB BAR (Only visible on small screens < md) -->
+            <div class="flex md:hidden bg-slate-950 border-b border-slate-800 p-1.5 gap-1 shrink-0">
+                <button id="mobile-tab-actions" class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-blue-600 text-white transition">⚡ Actions</button>
+                <button id="mobile-tab-vitals" class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 transition">📊 Vitals & Skills</button>
+                <button id="mobile-tab-log" class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 transition">📜 Console Log</button>
+            </div>
+
             <!-- Main Body Layout -->
-            <div class="flex-grow flex flex-col md:flex-row w-full overflow-hidden">
+            <div class="flex-grow flex flex-col md:flex-row w-full overflow-hidden relative">
                 
                 <!-- Left Column: Vitals & Skills -->
-                <aside class="w-full md:w-1/4 min-w-[240px] bg-slate-900/50 border-r border-slate-800 p-4 overflow-y-auto flex-shrink-0">
+                <aside id="col-vitals" class="w-full md:w-1/4 min-w-[240px] bg-slate-900/50 border-r border-slate-800 p-4 overflow-y-auto shrink-0 hidden md:block h-full">
                     
                     <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Resource Vitals</h3>
                     <div class="space-y-3 mb-6">
@@ -142,38 +162,35 @@
                     </button>
                 </aside>
 
-                <!-- Center Column: Workflow Guide & Actions -->
-                <main class="w-full md:w-2/4 p-4 sm:p-5 overflow-y-auto flex-grow bg-slate-900/20">
+                <!-- Center Column: Client Memos & Strategic Actions -->
+                <main id="col-actions" class="w-full md:w-2/4 p-3.5 sm:p-5 overflow-y-auto flex-grow bg-slate-900/20 block h-full">
                     
-                    <!-- How to Play Workflow Guide Banner -->
-                    <div class="bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-slate-900 border border-blue-500/30 rounded-xl p-3.5 mb-4 text-xs">
-                        <div class="flex items-center gap-2 text-blue-300 font-bold mb-1">
-                            <span>💡 Strategic Gameplay Rules</span>
+                    <!-- Backstory Banner -->
+                    <div class="bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-slate-900 border border-blue-500/30 rounded-xl p-3 sm:p-3.5 mb-3.5 text-xs">
+                        <div class="flex items-center justify-between text-blue-300 font-bold mb-1">
+                            <span>📜 Active Background Origin:</span>
+                            <span id="origin-tag-display" class="text-[10px] bg-blue-500/20 px-2 py-0.5 rounded text-blue-300 font-mono">---</span>
                         </div>
-                        <ol class="list-decimal list-inside space-y-1 text-slate-300 leading-relaxed">
-                            <li><strong class="text-amber-300">Diversify Actions:</strong> Repeating the exact same action twice in a row gives <span class="text-amber-400 font-semibold">50% diminished Skill Points</span>.</li>
-                            <li><strong class="text-emerald-300">Skill Points = Competencies:</strong> Building up your 8 Core Competencies (Audit, SEO, AI, etc.) unlocks badge gates.</li>
-                            <li><strong class="text-blue-300">Pass Concept Quizzes:</strong> Reaching a badge threshold triggers a syllabus mastery question.</li>
-                        </ol>
+                        <p id="origin-desc-display" class="text-slate-300 leading-relaxed text-[11px]"></p>
                     </div>
 
                     <div class="flex justify-between items-center mb-3">
                         <div>
-                            <h3 class="text-base font-bold text-white">Available Strategic Actions</h3>
-                            <p class="text-xs text-slate-400">Spend stamina on balanced strategic initiatives.</p>
+                            <h3 class="text-base font-bold text-white">Client Briefs & Strategic Tasks</h3>
+                            <p class="text-xs text-slate-400">Review incoming briefs and execute targeted campaigns.</p>
                         </div>
                         <span class="text-[10px] bg-blue-500/10 border border-blue-500/20 text-blue-400 px-2 py-1 rounded">Syllabus Aligned</span>
                     </div>
 
-                    <div id="actions-container" class="grid grid-cols-1 gap-3">
+                    <div id="actions-container" class="grid grid-cols-1 gap-3 sm:gap-3.5">
                         <!-- Action cards injected by JavaScript -->
                     </div>
                 </main>
 
-                <!-- Right Column: Live Event Log -->
-                <aside class="w-full md:w-1/4 min-w-[250px] bg-slate-950 border-l border-slate-800 p-4 overflow-y-auto flex-shrink-0 flex flex-col">
+                <!-- Right Column: Live Event Log & Ajarn Memos -->
+                <aside id="col-log" class="w-full md:w-1/4 min-w-[250px] bg-slate-950 border-l border-slate-800 p-4 overflow-y-auto shrink-0 hidden md:flex flex-col h-full">
                     <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center justify-between">
-                        <span>Console Log</span>
+                        <span>Console Log & Memos</span>
                         <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                     </h3>
                     <div id="event-log" class="space-y-2 text-xs font-mono flex-grow overflow-y-auto pr-1">
@@ -187,13 +204,66 @@
                 <div class="text-xs text-slate-400 hidden sm:block">
                     ⚡ Tip: Spend stamina on actions above <span class="text-amber-300">before</span> advancing!
                 </div>
-                <button id="next-week-btn" class="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-3 px-8 rounded-xl shadow-lg shadow-emerald-900/30 transition transform active:scale-95 flex items-center justify-center gap-2">
+                <button id="next-week-btn" class="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-xl shadow-lg shadow-emerald-900/30 transition transform active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base">
                     <span>Advance to Next Week</span>
-                    <span class="text-lg">➔</span>
+                    <span class="text-base sm:text-lg">➔</span>
                 </button>
             </footer>
         </div>
 
+    </div>
+
+    <!-- ================= CLIENT DOSSIERS & INBOX MODAL ================= -->
+    <div id="dossier-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 z-50">
+        <div class="bg-slate-900 border border-indigo-500/40 rounded-2xl shadow-2xl p-6 w-full max-w-2xl text-left max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3 shrink-0">
+                <div>
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        📩 Active Stakeholder & Client Dossiers
+                    </h3>
+                    <p class="text-xs text-slate-400">Key industry contacts and backstories in the BJM Bangkok network.</p>
+                </div>
+                <button id="close-dossier-btn" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+            </div>
+
+            <div class="overflow-y-auto space-y-3 flex-grow pr-1">
+                <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-sm text-amber-300">Khun Malee • Founder, Craft Culture BKK</span>
+                        <span class="text-[10px] font-mono bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded">SME Retail</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">Artisanal lifestyle brand expanding across Bangkok. Seeks clear digital maturity audits, PDPA compliance, and e-commerce conversions before seeking venture capital.</p>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-sm text-blue-300">Alex Vance • Chief Growth Officer, FinTech Nexus SEA</span>
+                        <span class="text-[10px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded">Corporate Tech</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">Aggressive regional fintech scale-up. Demands high ROAS across Meta/Google Performance Max and Looker Studio ROI dashboards for board meetings.</p>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-sm text-purple-300">Nicha • Managing Director, Velocity Media Agency</span>
+                        <span class="text-[10px] font-mono bg-purple-500/10 text-purple-400 border border-purple-500/30 px-2 py-0.5 rounded">Agency Partner</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">Fast-paced digital agency handling enterprise accounts. Values technical SEO audits, TikTok social commerce management, and AI prompt engineering.</p>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="font-bold text-sm text-emerald-300">Dr. Aris • Executive Director, SEA Media Policy Watch</span>
+                        <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded">Media Research NGO</span>
+                    </div>
+                    <p class="text-xs text-slate-300 leading-relaxed">Regional think-tank monitoring synthetic AI media, digital ethics, social listening, and misinformation fact-checking commissions.</p>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800 mt-3 shrink-0 flex justify-end">
+                <button id="close-dossier-btn-footer" class="bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold px-4 py-2 rounded-lg">Close Dossiers</button>
+            </div>
+        </div>
     </div>
 
     <!-- ================= SAVE / LOAD PROGRESS MODAL ================= -->
@@ -207,7 +277,7 @@
             </div>
 
             <p class="text-xs text-slate-300 mb-4 leading-relaxed">
-                You can save your progress and resume your career on GitHub Pages, Canvas, or any device by copying your personal Save Passcode Code below:
+                You can save your progress and resume your career on GitHub Pages, MS Teams, or any device by copying your personal Save Passcode Code below:
             </p>
 
             <!-- Export Code Box -->
@@ -270,7 +340,7 @@
         <div class="bg-slate-900 border border-blue-500/50 rounded-2xl shadow-2xl p-6 w-full max-w-lg text-left">
             <div class="flex justify-between items-center mb-3">
                 <span class="inline-block px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/30 text-blue-400 text-[10px] font-bold uppercase tracking-wider">
-                    🎓 JM 466 Badge Mastery Quiz Gate
+                    🎓 BJM JM 466 Badge Mastery Quiz Gate
                 </span>
                 <span id="quiz-badge-title" class="text-xs font-bold text-amber-400"></span>
             </div>
@@ -301,8 +371,8 @@
             <div class="p-4 sm:p-6 overflow-y-auto flex-grow space-y-6">
                 <!-- Submission Code Box -->
                 <div class="bg-blue-950/40 border border-blue-800/60 rounded-xl p-4">
-                    <h4 class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1">Canvas / Moodle Submission Proof</h4>
-                    <p class="text-xs text-slate-300 mb-2">Copy this code to submit your homework verification to your instructor:</p>
+                    <h4 class="text-xs font-bold text-blue-300 uppercase tracking-wider mb-1">MS Teams Submission Proof</h4>
+                    <p class="text-xs text-slate-300 mb-2">Copy this code to submit your homework verification on MS Teams to your instructor:</p>
                     <div class="flex gap-2">
                         <input type="text" id="verification-code" readonly class="w-full bg-slate-950 border border-slate-800 text-emerald-400 font-mono text-xs px-3 py-2 rounded font-semibold select-all" value="---">
                         <button id="copy-code-btn" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-4 py-2 rounded shrink-0">Copy</button>
@@ -350,7 +420,7 @@
                     <span id="summary-income" class="text-emerald-400">+$0</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
-                    <span>Tool & Living Overheads:</span>
+                    <span>Tool & Operating Overheads:</span>
                     <span class="text-rose-400">-$150</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
@@ -399,7 +469,7 @@
                 <option value="in-house">In-House Brand Lead (Corporate / Tech)</option>
                 <option value="agency">Digital Marketing Agency Account Lead</option>
                 <option value="creator">Digital Content Creator / Media Entrepreneur</option>
-                <option value="journalist">Digital Journalist / Investigative Reporter</option>
+                <option value="journalist">Digital Media Producer & Investigative Analyst</option>
             </select>
 
             <div class="flex justify-end gap-3">
@@ -409,72 +479,25 @@
         </div>
     </div>
 
-    <!-- ================= FIREBASE CLOUD STORAGE SETUP ================= -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // Global Firebase state holder if environment config is available
-        window.cloudSyncAvailable = false;
-        let firebaseApp, auth, db;
-        
-        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
-            try {
-                const firebaseConfig = JSON.parse(__firebase_config);
-                const appId = typeof __app_id !== 'undefined' ? __app_id : 'jm466-sim';
-                firebaseApp = initializeApp(firebaseConfig);
-                auth = getAuth(firebaseApp);
-                db = getFirestore(firebaseApp);
-
-                const initCloudAuth = async () => {
-                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                    } else {
-                        await signInAnonymously(auth);
-                    }
-                };
-
-                initCloudAuth().then(() => {
-                    onAuthStateChanged(auth, (user) => {
-                        if (user) {
-                            window.cloudSyncAvailable = true;
-                            window.saveToCloud = async (stateObj) => {
-                                try {
-                                    const saveDocRef = doc(db, 'artifacts', appId, 'users', user.uid, 'saves', 'slot1');
-                                    await setDoc(saveDocRef, { state: stateObj, updatedAt: new Date().toISOString() });
-                                } catch (err) {
-                                    console.log("Cloud save bypassed", err);
-                                }
-                            };
-                            window.loadFromCloud = async () => {
-                                try {
-                                    const saveDocRef = doc(db, 'artifacts', appId, 'users', user.uid, 'saves', 'slot1');
-                                    const snap = await getDoc(saveDocRef);
-                                    return snap.exists() ? snap.data().state : null;
-                                } catch (err) {
-                                    return null;
-                                }
-                            };
-                        }
-                    });
-                });
-            } catch (e) {
-                console.log("Firebase optional sync inactive");
-            }
-        }
-    </script>
-
     <!-- ================= GAME CORE ENGINE SCRIPT ================= -->
     <script>
         // ================= INSTRUCTOR CONTROL =================
-        // Change this number (e.g. 4 -> 5 -> 6) each week on GitHub to unlock new semester weeks for your students!
         const MAX_ALLOWED_WEEK = 4;
+
+        // ================= ORIGIN BACKSTORIES =================
+        const originsDB = {
+            'bjm_student': {
+                name: 'BJM Senior (JM 466 Student)',
+                desc: 'Current BJM student at Tha Prachan campus taking JM 466 Digital Strategy. Balanced baseline across all 8 core competencies.',
+                bonus: { audit: 2, seo: 2, ai: 2, crm: 2, paidMedia: 2, analytics: 2, content: 2, ethics: 2 }
+            }
+        };
 
         // ================= GAME STATE =================
         let gameState = {
             playerName: '',
             career: 'freelance',
+            origin: 'bjm_student',
             money: 1500,
             reputation: 15,
             energy: 100,
@@ -722,9 +745,27 @@
                 tag: 'Consultant Track',
                 icon: '💼',
                 actions: [
-                    { id: 'freelance_audit', label: 'Sell Digital Audit to SME Client', cost: 0, energy: 25, desc: 'Bill client $350 fee to assess digital maturity, PESTEL & competitor social footprint.', reward: { money: 350, audit: 4, analytics: 2, rep: 1 } },
-                    { id: 'freelance_ai_prompt', label: 'Deliver AI Content Engine', cost: 50, energy: 20, desc: 'Charge client $250 fee for monthly calendar created via Gemini/Claude (-$50 tool sub).', reward: { money: 250, ai: 5, content: 2, rep: 1 } },
-                    { id: 'freelance_pitch', label: 'Pitch Strategic Retainer to SME', cost: 100, energy: 35, desc: 'Present pitch deck (-$100 proposal costs) to win $750 monthly consulting retainer.', risk: true, reward: { money: 750, audit: 3, rep: 3 } }
+                    { 
+                        id: 'freelance_audit', 
+                        label: 'Memo from Khun Malee: Digital Maturity Audit', 
+                        cost: 0, energy: 25, 
+                        desc: '“We need an urgent PESTEL & competitor social audit before pitching investors.” Bill $350 fee.', 
+                        reward: { money: 350, audit: 4, analytics: 2, rep: 1 } 
+                    },
+                    { 
+                        id: 'freelance_ai_prompt', 
+                        label: 'Client Inquiry: AI Multi-Channel Content Calendar', 
+                        cost: 50, energy: 20, 
+                        desc: '“Can you build us a 30-day social calendar using Gemini/Claude?” Charge $250 fee (-$50 tool sub).', 
+                        reward: { money: 250, ai: 5, content: 2, rep: 1 } 
+                    },
+                    { 
+                        id: 'freelance_pitch', 
+                        label: 'Pitch Deck Memo: Retainer to SME Growth Board', 
+                        cost: 100, energy: 35, 
+                        desc: 'Present deck (-$100 proposal costs) to win $750 monthly consulting retainer.', 
+                        risk: true, reward: { money: 750, audit: 3, rep: 3 } 
+                    }
                 ]
             },
             'in-house': {
@@ -732,9 +773,27 @@
                 tag: 'Corporate Track',
                 icon: '🏢',
                 actions: [
-                    { id: 'inhouse_crm', label: 'Optimize Hubspot Lead Funnel', cost: 80, energy: 20, desc: 'Spend $80 on CRM email tools to capture leads, generating $300 in sales attribution.', reward: { money: 300, crm: 5, analytics: 2 } },
-                    { id: 'inhouse_paid', label: 'Scale Meta & Google Paid Ads', cost: 150, energy: 30, desc: 'Allocate $150 ad spend to yield $450 in direct e-commerce campaign revenue.', risk: true, reward: { money: 450, paidMedia: 5, analytics: 3, rep: 1 } },
-                    { id: 'inhouse_pdpa', label: 'Execute PDPA & Cookie Audit', cost: 0, energy: 25, desc: 'Audit compliance to earn $200 quarterly compliance bonus & avoid legal fines.', reward: { money: 200, ethics: 5, audit: 2, rep: 2 } }
+                    { 
+                        id: 'inhouse_crm', 
+                        label: 'Slack from CGO Alex: Hubspot Lead Funnel Optimization', 
+                        cost: 80, energy: 20, 
+                        desc: '“Our CAC is rising! Re-engage stagnant email leads.” Spend $80 on tools for $300 sales attribution.', 
+                        reward: { money: 300, crm: 5, analytics: 2 } 
+                    },
+                    { 
+                        id: 'inhouse_paid', 
+                        label: 'Performance Memo: Scale Meta & Google Paid Ads', 
+                        cost: 150, energy: 30, 
+                        desc: 'Allocate $150 ad budget toward lookalike audiences to yield $450 in direct sales.', 
+                        risk: true, reward: { money: 450, paidMedia: 5, analytics: 3, rep: 1 } 
+                    },
+                    { 
+                        id: 'inhouse_pdpa', 
+                        label: 'Legal Briefing: Execute PDPA & Cookie Consent Audit', 
+                        cost: 0, energy: 25, 
+                        desc: 'Audit web forms to earn $200 quarterly compliance bonus & avoid regulatory warnings.', 
+                        reward: { money: 200, ethics: 5, audit: 2, rep: 2 } 
+                    }
                 ]
             },
             'agency': {
@@ -742,9 +801,27 @@
                 tag: 'Agency Track',
                 icon: '⚡',
                 actions: [
-                    { id: 'agency_seo', label: 'Bill Client for Technical SEO Audit', cost: 40, energy: 25, desc: 'Fix crawl errors using SEMrush/Ahrefs (-$40 tool fee) & collect $400 client project payout.', reward: { money: 400, seo: 5, analytics: 2 } },
-                    { id: 'agency_campaign', label: 'Launch TikTok Live Commerce Project', cost: 120, energy: 35, desc: 'Manage $120 creator ad budget & collect $650 agency management fee.', risk: true, reward: { money: 650, content: 4, paidMedia: 3, rep: 2 } },
-                    { id: 'agency_dashboard', label: 'Deliver GA4 Executive Dashboard', cost: 0, energy: 20, desc: 'Build Looker Studio reporting for client board to collect $300 reporting fee.', reward: { money: 300, analytics: 5, audit: 2 } }
+                    { 
+                        id: 'agency_seo', 
+                        label: 'Client Ticket: Technical SEO & Site Speed Audit', 
+                        cost: 40, energy: 25, 
+                        desc: 'Fix crawl errors using SEMrush/Ahrefs (-$40 tool fee) & collect $400 client project payout.', 
+                        reward: { money: 400, seo: 5, analytics: 2 } 
+                    },
+                    { 
+                        id: 'agency_campaign', 
+                        label: 'Agency Brief: TikTok Live Commerce Launch', 
+                        cost: 120, energy: 35, 
+                        desc: 'Manage $120 creator affiliate budget & collect $650 agency management fee.', 
+                        risk: true, reward: { money: 650, content: 4, paidMedia: 3, rep: 2 } 
+                    },
+                    { 
+                        id: 'agency_dashboard', 
+                        label: 'Executive Request: GA4 Looker Studio Dashboard', 
+                        cost: 0, energy: 20, 
+                        desc: 'Build automated ROAS dashboard for client board to collect $300 reporting fee.', 
+                        reward: { money: 300, analytics: 5, audit: 2 } 
+                    }
                 ]
             },
             'creator': {
@@ -752,19 +829,55 @@
                 tag: 'Creator Track',
                 icon: '🎥',
                 actions: [
-                    { id: 'creator_video', label: 'Produce Sponsored Tech/Media Video', cost: 100, energy: 35, desc: 'Spend $100 on production gear/props to earn $350 sponsor & ad revenue.', reward: { money: 350, content: 5, ai: 2, rep: 2 } },
-                    { id: 'creator_funnel', label: 'Monetize E-Book / Digital Product', cost: 60, energy: 25, desc: 'Pay $60 landing page & email hosting to earn $500 in direct template sales.', reward: { money: 500, crm: 4, seo: 2 } },
-                    { id: 'creator_sponsorship', label: 'Secure Brand Affiliate Deal', cost: 0, energy: 20, desc: 'Negotiate long-term brand affiliate contract yielding $600 payout.', risk: true, reward: { money: 600, rep: 2, ethics: 2 } }
+                    { 
+                        id: 'creator_video', 
+                        label: 'Production Brief: Sponsored Tech/Media Video', 
+                        cost: 100, energy: 35, 
+                        desc: 'Invest $100 in production gear/props to earn $350 sponsor payout & YouTube AdSense.', 
+                        reward: { money: 350, content: 5, ai: 2, rep: 2 } 
+                    },
+                    { 
+                        id: 'creator_funnel', 
+                        label: 'Product Launch: Monetize E-Book Strategy Guide', 
+                        cost: 60, energy: 25, 
+                        desc: 'Pay $60 landing page & email funnel hosting to earn $500 in direct template sales.', 
+                        reward: { money: 500, crm: 4, seo: 2 } 
+                    },
+                    { 
+                        id: 'creator_sponsorship', 
+                        label: 'Contract Memo: Secure Long-Term Brand Affiliate Deal', 
+                        cost: 0, energy: 20, 
+                        desc: 'Negotiate long-term brand affiliate contract yielding $600 payout.', 
+                        risk: true, reward: { money: 600, rep: 2, ethics: 2 } 
+                    }
                 ]
             },
             'journalist': {
-                title: 'Digital Journalist & Media Producer',
+                title: 'Digital Media Producer & Investigative Analyst',
                 tag: 'Media Track',
                 icon: '📰',
                 actions: [
-                    { id: 'journo_investigate', label: 'Social Listening Investigation', cost: 30, energy: 30, desc: 'Use Brandwatch/Zanroo (-$30 query fee) to publish piece with $250 syndication payout.', reward: { money: 250, audit: 4, ethics: 3, rep: 2 } },
-                    { id: 'journo_seo_article', label: 'Publish Commissioned Evergreen Feature', cost: 0, energy: 25, desc: 'Write long-form search feature for major outlet to earn $300 writer stipend.', reward: { money: 300, seo: 5, content: 3 } },
-                    { id: 'journo_factcheck', label: 'AI Misinformation Fact-Check Commission', cost: 0, energy: 20, desc: 'Verify viral synthetic media for media trust fund to earn $220 grant payout.', reward: { money: 220, ai: 3, ethics: 5, rep: 2 } }
+                    { 
+                        id: 'journo_investigate', 
+                        label: 'Editor Request: Social Listening Investigation', 
+                        cost: 30, energy: 30, 
+                        desc: 'Use Brandwatch/Zanroo (-$30 query fee) to publish piece with $250 syndication payout.', 
+                        reward: { money: 250, audit: 4, ethics: 3, rep: 2 } 
+                    },
+                    { 
+                        id: 'journo_seo_article', 
+                        label: 'Commission Brief: Long-Form Evergreen SEO Feature', 
+                        cost: 0, energy: 25, 
+                        desc: 'Write long-form search feature for major outlet to earn $300 writer stipend.', 
+                        reward: { money: 300, seo: 5, content: 3 } 
+                    },
+                    { 
+                        id: 'journo_factcheck', 
+                        label: 'Grant Memo: AI Synthetic Media Fact-Check Investigation', 
+                        cost: 0, energy: 20, 
+                        desc: 'Verify viral synthetic media for media trust fund to earn $220 grant payout.', 
+                        reward: { money: 220, ai: 3, ethics: 5, rep: 2 } 
+                    }
                 ]
             }
         };
@@ -778,8 +891,8 @@
         // ================= RANDOM SCENARIOS WITH DETAILED RATIONALE =================
         const scenariosDB = [
             {
-                title: "Viral Negative Review Crisis",
-                desc: "A disgruntled customer posted a video complaining about product quality, and it's trending on X (Twitter). How do you respond?",
+                title: "🚨 Crisis Alert: Viral Customer Review Backlash",
+                desc: "A disgruntled customer posted a video complaining about product defects, and it's trending on X (Twitter) in Thailand. How do you respond?",
                 choices: [
                     { 
                         label: "Issue quick transparent apology & public investigation", 
@@ -797,7 +910,7 @@
                         } 
                     },
                     { 
-                        label: "Delete comments and disable posting", 
+                        label: "Delete negative comments and disable posting", 
                         rationale: "Attempting to censor legitimate feedback triggers the 'Streisand Effect'. The public perceived your silence as dishonesty, severely destroying brand reputation.",
                         effect: state => { 
                             state.reputation -= 8; 
@@ -824,8 +937,8 @@
                 ]
             },
             {
-                title: "Google Core Algorithm Shift",
-                desc: "Google rolled out a helpful content update. Your site search traffic dropped by 25% overnight!",
+                title: "🌐 Market Disruption: Google Generative AI Overview Shift",
+                desc: "Google rolled out AI-generated answers above search results in Thailand, dropping organic CTR by 25% overnight!",
                 choices: [
                     { 
                         label: "Audit content with AI & rebuild helpful search intent structure", 
@@ -855,7 +968,7 @@
                 ]
             },
             {
-                title: "PDPA Data Privacy Audit Notice",
+                title: "⚖️ Legal Notice: PDPA Data Privacy Compliance Audit",
                 desc: "The Personal Data Protection Committee requested proof of explicit consent management for your lead capture forms.",
                 choices: [
                     { 
@@ -882,6 +995,36 @@
                         } 
                     }
                 ]
+            },
+            {
+                title: "🕵️ Investigation: Influencer Fake Follower Scandal",
+                desc: "A key creator hired for an upcoming campaign was accused of buying 80% bot followers on Instagram.",
+                choices: [
+                    {
+                        label: "Conduct audit with Zanroo/Brandwatch & terminate contract",
+                        rationale: "Shedding fraudulent partners preserves brand credibility and reinforces data-driven influencer selection.",
+                        effect: state => {
+                            state.stats.audit += 3;
+                            state.reputation += 3;
+                            return [
+                                { type: 'good', text: '📊 +3 Audit Skill' },
+                                { type: 'good', text: '⭐ +3 Reputation' }
+                            ];
+                        }
+                    },
+                    {
+                        label: "Proceed with campaign regardless to hit short-term impression target",
+                        rationale: "Short-term vanity metrics were met, but media analysts called out the bot engagement, hurting brand trust.",
+                        effect: state => {
+                            state.money += 200;
+                            state.reputation -= 4;
+                            return [
+                                { type: 'good', text: '💰 +$200 Revenue' },
+                                { type: 'bad', text: '⭐ -4 Reputation' }
+                            ];
+                        }
+                    }
+                ]
             }
         ];
 
@@ -894,6 +1037,7 @@
         const UI = {
             playerNameInput: document.getElementById('player-name'),
             careerChoiceSelect: document.getElementById('career-choice'),
+            originStorySelect: document.getElementById('origin-story'),
             startGameBtn: document.getElementById('start-game-btn'),
             openLoadStartBtn: document.getElementById('open-load-start-btn'),
             
@@ -904,6 +1048,8 @@
             dateDisplay: document.getElementById('date-display'),
             moneyDisplay: document.getElementById('money-display'),
             instructorCapTag: document.getElementById('instructor-cap-tag'),
+            originTagDisplay: document.getElementById('origin-tag-display'),
+            originDescDisplay: document.getElementById('origin-desc-display'),
             
             energyText: document.getElementById('energy-text'),
             energyBar: document.getElementById('energy-bar'),
@@ -915,6 +1061,14 @@
             eventLog: document.getElementById('event-log'),
             nextWeekBtn: document.getElementById('next-week-btn'),
 
+            // Mobile Tabs
+            mobileTabActions: document.getElementById('mobile-tab-actions'),
+            mobileTabVitals: document.getElementById('mobile-tab-vitals'),
+            mobileTabLog: document.getElementById('mobile-tab-log'),
+            colActions: document.getElementById('col-actions'),
+            colVitals: document.getElementById('col-vitals'),
+            colLog: document.getElementById('col-log'),
+
             // Save/Load Modal
             openSaveBtn: document.getElementById('open-save-btn'),
             saveModal: document.getElementById('save-modal'),
@@ -924,6 +1078,12 @@
             executeLoadBtn: document.getElementById('execute-load-btn'),
             closeSaveModalBtn: document.getElementById('close-save-modal-btn'),
             closeSaveModalBtnFooter: document.getElementById('close-save-modal-btn-footer'),
+
+            // Dossiers Modal
+            openDossierBtn: document.getElementById('open-dossier-btn'),
+            dossierModal: document.getElementById('dossier-modal'),
+            closeDossierBtn: document.getElementById('close-dossier-btn'),
+            closeDossierBtnFooter: document.getElementById('close-dossier-btn-footer'),
             
             // Badges Modal
             openBadgesBtn: document.getElementById('open-badges-btn'),
@@ -990,8 +1150,16 @@
 
             gameState.playerName = name;
             gameState.career = UI.careerChoiceSelect.value;
+            gameState.origin = UI.originStorySelect.value;
+
+            // Apply origin background bonuses with fallback
+            const originData = originsDB[gameState.origin] || originsDB['bjm_student'];
+            for (const [stat, bonus] of Object.entries(originData.bonus)) {
+                gameState.stats[stat] += bonus;
+            }
             
-            logConsole(`Welcome, ${name}! Your JM466 Digital Strategy Journey begins as a ${careersDB[gameState.career].title}.`);
+            logConsole(`Welcome, ${name}! Your BJM JM466 Digital Strategy Journey begins as a ${careersDB[gameState.career].title}.`);
+            logConsole(`Origin Story Applied: ${originData.name}.`);
             logConsole(weeklyBriefs[1] || "Week 1 underway.");
             
             updateUI();
@@ -999,8 +1167,10 @@
             screens.start.classList.remove('active');
             screens.dashboard.classList.add('active');
 
-            showAlert("Welcome to JM 466 Sim!", 
+            showAlert("Welcome to BJM JM 466 Sim!", 
                 `Hello ${name}! You are starting as a ${careersDB[gameState.career].title}.\n\n` +
+                `📜 Origin Story: ${originData.name}\n` +
+                `${originData.desc}\n\n` +
                 "🎓 RULES & MASTERY CHALLENGES:\n" +
                 "1. Diversify your strategic actions. Repeating actions back-to-back yields 50% diminishing Skill Points!\n" +
                 "2. Skill Points build your 8 Core Competencies (Audit, SEO, AI, etc.).\n" +
@@ -1011,6 +1181,7 @@
         // ================= UI RENDER FUNCTIONS =================
         function updateUI() {
             const careerData = careersDB[gameState.career];
+            const originData = originsDB[gameState.origin] || originsDB['bjm_student'];
 
             // Header
             UI.playerNameDisplay.textContent = gameState.playerName;
@@ -1020,6 +1191,10 @@
             UI.dateDisplay.textContent = `Semester Week ${gameState.week}`;
             UI.instructorCapTag.textContent = `Max Wk ${MAX_ALLOWED_WEEK}`;
             UI.moneyDisplay.textContent = `$${gameState.money.toLocaleString()}`;
+
+            // Backstory Banner
+            UI.originTagDisplay.textContent = originData.name;
+            UI.originDescDisplay.textContent = originData.desc;
 
             // Vitals
             UI.energyText.textContent = `${gameState.energy} / 100`;
@@ -1067,9 +1242,6 @@
             // Sync Save State
             updateVerificationCode();
             generateSaveCode();
-            if (window.cloudSyncAvailable && window.saveToCloud) {
-                window.saveToCloud(gameState);
-            }
         }
 
         function renderActionCard(action, isShared) {
@@ -1104,7 +1276,7 @@
                         </h4>
                         ${isShared ? '<span class="text-[9px] bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">Shared</span>' : ''}
                     </div>
-                    <p class="text-xs text-slate-400 mb-2">${action.desc}</p>
+                    <p class="text-xs text-slate-400 mb-2 leading-relaxed">${action.desc}</p>
                     
                     <div class="flex flex-wrap gap-1 mb-2">
                         ${skillGainTags.map(tag => `<span class="text-[10px] bg-blue-500/10 border border-blue-500/30 text-blue-300 px-1.5 py-0.5 rounded font-mono">${tag}</span>`).join('')}
@@ -1205,13 +1377,12 @@
 
         // ================= WEEK ADVANCEMENT & CRISIS =================
         function advanceWeek() {
-            // Check Instructor Unlock Cap
             if (gameState.week >= MAX_ALLOWED_WEEK) {
                 showAlert("🔒 Semester Module Lock", 
                     `You have reached Semester Week ${gameState.week}, which is the maximum unlocked week for this stage of the course.\n\n` +
                     "📌 WHAT TO DO NOW:\n" +
                     "1. Review course materials and complete any pending badge quizzes.\n" +
-                    "2. Open '🏆 Badges' and copy your Canvas/Moodle Submission Verification Code.\n" +
+                    "2. Open '🏆 Badges' and copy your MS Teams Submission Verification Code.\n" +
                     "3. Open '💾 Save / Load' to save your progress code.\n\n" +
                     `Your instructor will unlock Week ${gameState.week + 1} after the next lecture!`
                 );
@@ -1233,7 +1404,6 @@
             const brief = weeklyBriefs[gameState.week] || `📖 [Week ${gameState.week} Briefing]: Client demand continues across digital channels.`;
             logConsole(brief);
 
-            // Populate Week Summary Modal
             UI.weekSummaryTitle.textContent = `Semester Week ${gameState.week} Statement`;
             UI.summaryIncome.textContent = `+$${incomeThisWeek.toLocaleString()}`;
             UI.summaryExpenses.textContent = `-$${expensesThisWeek.toLocaleString()}`;
@@ -1242,7 +1412,6 @@
             UI.summaryBalance.textContent = `$${gameState.money.toLocaleString()}`;
             UI.summaryBriefText.textContent = brief;
 
-            // Reset weekly trackers
             gameState.weeklyIncomeTracker = 0;
             gameState.weeklyExpenseTracker = 0;
 
@@ -1402,6 +1571,7 @@
                 
                 if (loadedState && loadedState.playerName && loadedState.stats) {
                     gameState = loadedState;
+                    if (!gameState.origin) gameState.origin = 'bjm_student';
                     logConsole(`Loaded save game for ${gameState.playerName} (Week ${gameState.week}).`);
                     updateUI();
                     screens.start.classList.remove('active');
@@ -1426,6 +1596,31 @@
                 h: btoa(`${gameState.playerName}-${gameState.unlockedBadges.length}-${gameState.week}`)
             };
             UI.verificationCodeInput.value = `JM466-VERIFY-${btoa(JSON.stringify(payload))}`;
+        }
+
+        // ================= MOBILE TAB SWITCHING =================
+        function switchMobileTab(tab) {
+            UI.colActions.classList.add('hidden');
+            UI.colVitals.classList.add('hidden');
+            UI.colLog.classList.add('hidden');
+
+            UI.mobileTabActions.className = "flex-1 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 transition";
+            UI.mobileTabVitals.className = "flex-1 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 transition";
+            UI.mobileTabLog.className = "flex-1 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 transition";
+
+            if (tab === 'actions') {
+                UI.colActions.classList.remove('hidden');
+                UI.colActions.classList.add('block');
+                UI.mobileTabActions.className = "flex-1 py-1.5 text-xs font-bold rounded-lg bg-blue-600 text-white transition";
+            } else if (tab === 'vitals') {
+                UI.colVitals.classList.remove('hidden');
+                UI.colVitals.classList.add('block');
+                UI.mobileTabVitals.className = "flex-1 py-1.5 text-xs font-bold rounded-lg bg-blue-600 text-white transition";
+            } else if (tab === 'log') {
+                UI.colLog.classList.remove('hidden');
+                UI.colLog.classList.add('flex');
+                UI.mobileTabLog.className = "flex-1 py-1.5 text-xs font-bold rounded-lg bg-blue-600 text-white transition";
+            }
         }
 
         // ================= HELPER UTILITIES =================
@@ -1474,6 +1669,10 @@
         UI.startGameBtn.addEventListener('click', initGame);
         UI.nextWeekBtn.addEventListener('click', advanceWeek);
         
+        UI.mobileTabActions.addEventListener('click', () => switchMobileTab('actions'));
+        UI.mobileTabVitals.addEventListener('click', () => switchMobileTab('vitals'));
+        UI.mobileTabLog.addEventListener('click', () => switchMobileTab('log'));
+
         UI.openBadgesBtn.addEventListener('click', () => {
             renderBadgesGrid();
             UI.badgesModal.classList.remove('hidden');
@@ -1491,6 +1690,10 @@
         });
         UI.closeSaveModalBtn.addEventListener('click', () => UI.saveModal.classList.add('hidden'));
         UI.closeSaveModalBtnFooter.addEventListener('click', () => UI.saveModal.classList.add('hidden'));
+
+        UI.openDossierBtn.addEventListener('click', () => UI.dossierModal.classList.remove('hidden'));
+        UI.closeDossierBtn.addEventListener('click', () => UI.dossierModal.classList.add('hidden'));
+        UI.closeDossierBtnFooter.addEventListener('click', () => UI.dossierModal.classList.add('hidden'));
 
         UI.copySaveCodeBtn.addEventListener('click', () => {
             UI.exportSaveCode.select();
