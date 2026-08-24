@@ -89,7 +89,10 @@
 
                 <div class="flex items-center gap-3 text-right">
                     <div>
-                        <p id="date-display" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Semester Week 1</p>
+                        <div class="flex items-center justify-end gap-1.5">
+                            <p id="date-display" class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Semester Week 1</p>
+                            <span id="instructor-cap-tag" class="text-[9px] bg-amber-500/10 text-amber-300 border border-amber-500/30 px-1.5 py-0.2 rounded font-mono">Max Wk 4</span>
+                        </div>
                         <p id="money-display" class="text-lg sm:text-xl font-bold text-emerald-400 font-mono">$1,500</p>
                     </div>
                     <button id="open-save-btn" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition">
@@ -464,6 +467,10 @@
 
     <!-- ================= GAME CORE ENGINE SCRIPT ================= -->
     <script>
+        // ================= INSTRUCTOR CONTROL =================
+        // Change this number (e.g. 4 -> 5 -> 6) each week on GitHub to unlock new semester weeks for your students!
+        const MAX_ALLOWED_WEEK = 4;
+
         // ================= GAME STATE =================
         let gameState = {
             playerName: '',
@@ -896,6 +903,7 @@
             avatarIcon: document.getElementById('avatar-icon'),
             dateDisplay: document.getElementById('date-display'),
             moneyDisplay: document.getElementById('money-display'),
+            instructorCapTag: document.getElementById('instructor-cap-tag'),
             
             energyText: document.getElementById('energy-text'),
             energyBar: document.getElementById('energy-bar'),
@@ -1010,6 +1018,7 @@
             UI.careerBadge.textContent = careerData.tag;
             UI.avatarIcon.textContent = careerData.icon;
             UI.dateDisplay.textContent = `Semester Week ${gameState.week}`;
+            UI.instructorCapTag.textContent = `Max Wk ${MAX_ALLOWED_WEEK}`;
             UI.moneyDisplay.textContent = `$${gameState.money.toLocaleString()}`;
 
             // Vitals
@@ -1196,6 +1205,19 @@
 
         // ================= WEEK ADVANCEMENT & CRISIS =================
         function advanceWeek() {
+            // Check Instructor Unlock Cap
+            if (gameState.week >= MAX_ALLOWED_WEEK) {
+                showAlert("🔒 Semester Module Lock", 
+                    `You have reached Semester Week ${gameState.week}, which is the maximum unlocked week for this stage of the course.\n\n` +
+                    "📌 WHAT TO DO NOW:\n" +
+                    "1. Review course materials and complete any pending badge quizzes.\n" +
+                    "2. Open '🏆 Badges' and copy your Canvas/Moodle Submission Verification Code.\n" +
+                    "3. Open '💾 Save / Load' to save your progress code.\n\n" +
+                    `Your instructor will unlock Week ${gameState.week + 1} after the next lecture!`
+                );
+                return;
+            }
+
             const weeklyOverhead = 150;
             gameState.money -= weeklyOverhead;
 
@@ -1479,4 +1501,27 @@
 
         UI.executeLoadBtn.addEventListener('click', () => {
             const code = UI.importSaveCode.value;
- 
+            if (parseAndLoadSaveCode(code)) {
+                UI.saveModal.classList.add('hidden');
+            }
+        });
+
+        UI.closeOutcomeBtn.addEventListener('click', () => UI.scenarioOutcomeModal.classList.add('hidden'));
+        UI.closeWeekSummaryBtn.addEventListener('click', () => UI.weekSummaryModal.classList.add('hidden'));
+
+        UI.changeCareerBtn.addEventListener('click', () => UI.careerModal.classList.remove('hidden'));
+        UI.cancelCareerBtn.addEventListener('click', () => UI.careerModal.classList.add('hidden'));
+        UI.confirmCareerBtn.addEventListener('click', executeCareerPivot);
+
+        UI.alertCloseBtn.addEventListener('click', () => UI.alertModal.classList.add('hidden'));
+
+        UI.copyCodeBtn.addEventListener('click', () => {
+            UI.verificationCodeInput.select();
+            document.execCommand('copy');
+            UI.copyCodeBtn.textContent = 'Copied!';
+            setTimeout(() => { UI.copyCodeBtn.textContent = 'Copy'; }, 2000);
+        });
+
+    </script>
+</body>
+</html>
