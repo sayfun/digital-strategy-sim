@@ -34,7 +34,7 @@
                 JM 466 <span class="text-blue-500">Digital Strategy</span> Sim
             </h1>
             <p class="text-slate-400 max-w-xl text-xs sm:text-sm mb-5 leading-relaxed">
-                Step into the shoes of a modern BJM digital strategist in Bangkok. Manage real client briefs, pitch executive retainers, handle viral crises, and navigate AI disruption.
+                Step into the shoes of a modern BJM digital strategist in Bangkok. Manage real client briefs, navigate overt strategic trade-offs, solve viral crises, and build your digital leadership philosophy.
             </p>
 
             <div class="w-full max-w-lg bg-slate-800/80 p-5 sm:p-6 rounded-xl border border-slate-700/60 shadow-xl text-left">
@@ -134,18 +134,18 @@
             <!-- MOBILE TAB BAR (Only visible on small screens < md) -->
             <div class="flex md:hidden bg-slate-950 border-b border-slate-800 p-1.5 gap-1 shrink-0">
                 <button id="mobile-tab-actions" class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-blue-600 text-white transition">⚡ Actions</button>
-                <button id="mobile-tab-vitals" class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 transition">📊 Vitals & Skills</button>
+                <button id="mobile-tab-vitals" class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 transition">📊 Vitals & Orientation</button>
                 <button id="mobile-tab-log" class="flex-1 py-1.5 text-xs font-bold rounded-lg bg-slate-800 text-slate-400 transition">📜 Console Log</button>
             </div>
 
             <!-- Main Body Layout -->
             <div class="flex-grow flex flex-col md:flex-row w-full overflow-hidden relative">
                 
-                <!-- Left Column: Vitals & Skills -->
+                <!-- Left Column: Vitals & Strategic Orientation -->
                 <aside id="col-vitals" class="w-full md:w-1/4 min-w-[240px] bg-slate-900/50 border-r border-slate-800 p-4 overflow-y-auto shrink-0 hidden md:block h-full">
                     
                     <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Resource Vitals</h3>
-                    <div class="space-y-3 mb-6">
+                    <div class="space-y-3 mb-5">
                         <div>
                             <div class="flex justify-between text-xs mb-1">
                                 <span class="text-slate-300 font-medium">Stamina / Capacity</span>
@@ -166,8 +166,45 @@
                         </div>
                     </div>
 
+                    <!-- STRATEGIC ORIENTATION PROFILE (Philosophy Alignment) -->
+                    <div class="bg-slate-950/80 border border-slate-800 p-3 rounded-xl mb-5">
+                        <h4 class="text-[10px] font-bold text-blue-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+                            <span>🧭 Strategist Philosophy</span>
+                            <span id="dominant-orientation-tag" class="text-[9px] bg-blue-500/20 text-blue-300 px-1.5 py-0.5 rounded font-mono">Balanced</span>
+                        </h4>
+                        <div class="space-y-2 text-[11px]">
+                            <div>
+                                <div class="flex justify-between text-slate-300 mb-0.5">
+                                    <span>⚖️ Ethics & Brand Equity</span>
+                                    <span id="orient-ethics-val" class="font-mono text-emerald-400">0</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-1">
+                                    <div id="orient-ethics-bar" class="bg-emerald-400 h-1 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-slate-300 mb-0.5">
+                                    <span>📈 Paid & Speed ROAS</span>
+                                    <span id="orient-performance-val" class="font-mono text-amber-400">0</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-1">
+                                    <div id="orient-performance-bar" class="bg-amber-400 h-1 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-slate-300 mb-0.5">
+                                    <span>🤖 Owned Media & MarTech</span>
+                                    <span id="orient-owned-val" class="font-mono text-indigo-400">0</span>
+                                </div>
+                                <div class="w-full bg-slate-800 rounded-full h-1">
+                                    <div id="orient-owned-bar" class="bg-indigo-400 h-1 rounded-full" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">JM 466 Core Competencies</h3>
-                    <div id="stats-container" class="space-y-2.5 mb-6">
+                    <div id="stats-container" class="space-y-2 mb-5">
                         <!-- Stat bars injected by JavaScript -->
                     </div>
 
@@ -190,10 +227,10 @@
 
                     <div class="flex justify-between items-center mb-3">
                         <div>
-                            <h3 class="text-base font-bold text-white">Client Briefs & Strategic Tasks</h3>
-                            <p class="text-xs text-slate-400">Review incoming briefs and execute targeted campaigns.</p>
+                            <h3 class="text-base font-bold text-white">Client Briefs & Overt Dilemmas</h3>
+                            <p class="text-xs text-slate-400">Evaluate strategic trade-offs before committing resources.</p>
                         </div>
-                        <span class="text-[10px] bg-blue-500/10 border border-blue-500/20 text-blue-400 px-2 py-1 rounded">Syllabus Aligned</span>
+                        <span class="text-[10px] bg-blue-500/10 border border-blue-500/20 text-blue-400 px-2 py-1 rounded">Trade-Off Focused</span>
                     </div>
 
                     <div id="actions-container" class="grid grid-cols-1 gap-3 sm:gap-3.5">
@@ -238,7 +275,7 @@
             </div>
 
             <p class="text-xs text-slate-300 mb-2 leading-relaxed">
-                This log tracks timestamped actions, quiz attempts, and strategic choices for research analysis in higher education gamification and EdTech.
+                This log tracks timestamped actions, trade-off choices, quiz attempts, and strategic orientation for research analysis in higher education gamification and EdTech.
             </p>
 
             <div class="p-3 bg-slate-950 border border-slate-800 rounded-lg mb-4 text-xs">
@@ -566,6 +603,11 @@
                 analytics: 10,   // GA4, Dashboards, ROI
                 ethics: 10       // PDPA, Crisis PR, Media Law
             },
+            orientation: {
+                ethics: 10,       // Ethical & Brand Equity Score
+                performance: 10,  // Paid Ads & Speed ROAS Score
+                owned: 10         // Owned Media & MarTech Automation Score
+            },
             unlockedBadges: [],
             pendingQuizBadge: null,
             lastActionId: null,
@@ -814,22 +856,28 @@
                         id: 'freelance_audit', 
                         label: 'Memo from Khun Malee: Digital Maturity Audit', 
                         cost: 0, energy: 25, 
+                        tradeoffTag: '⚖️ Equity & Audit Focus',
                         desc: '“We need an urgent PESTEL & competitor social audit before pitching investors.” Bill $350 fee.', 
-                        reward: { money: 350, audit: 4, analytics: 2, rep: 1 } 
+                        reward: { money: 350, audit: 4, analytics: 2, rep: 1 },
+                        orientPoints: { ethics: 2 }
                     },
                     { 
                         id: 'freelance_ai_prompt', 
                         label: 'Client Inquiry: AI Multi-Channel Content Calendar', 
                         cost: 50, energy: 20, 
+                        tradeoffTag: '🤖 Speed & AI Automation',
                         desc: '“Can you build us a 30-day social calendar using Gemini/Claude?” Charge $250 fee (-$50 tool sub).', 
-                        reward: { money: 250, ai: 5, content: 2, rep: 1 } 
+                        reward: { money: 250, ai: 5, content: 2, rep: 1 },
+                        orientPoints: { owned: 3 }
                     },
                     { 
                         id: 'freelance_pitch', 
                         label: 'Pitch Deck Memo: Retainer to SME Growth Board', 
                         cost: 100, energy: 35, 
+                        tradeoffTag: '📈 High Capital Risk vs Retainer',
                         desc: 'Present deck (-$100 proposal costs) to win $750 monthly consulting retainer.', 
-                        risk: true, reward: { money: 750, audit: 3, rep: 3 } 
+                        risk: true, reward: { money: 750, audit: 3, rep: 3 },
+                        orientPoints: { performance: 3 }
                     }
                 ]
             },
@@ -842,22 +890,28 @@
                         id: 'inhouse_crm', 
                         label: 'Slack from CGO Alex: Hubspot Lead Funnel Optimization', 
                         cost: 80, energy: 20, 
+                        tradeoffTag: '💌 Owned Media vs Paid CAC',
                         desc: '“Our CAC is rising! Re-engage stagnant email leads.” Spend $80 on tools for $300 sales attribution.', 
-                        reward: { money: 300, crm: 5, analytics: 2 } 
+                        reward: { money: 300, crm: 5, analytics: 2 },
+                        orientPoints: { owned: 3 }
                     },
                     { 
                         id: 'inhouse_paid', 
                         label: 'Performance Memo: Scale Meta & Google Paid Ads', 
                         cost: 150, energy: 30, 
+                        tradeoffTag: '📈 Paid ROAS vs Ad Budget Burn',
                         desc: 'Allocate $150 ad budget toward lookalike audiences to yield $450 in direct sales.', 
-                        risk: true, reward: { money: 450, paidMedia: 5, analytics: 3, rep: 1 } 
+                        risk: true, reward: { money: 450, paidMedia: 5, analytics: 3, rep: 1 },
+                        orientPoints: { performance: 3 }
                     },
                     { 
                         id: 'inhouse_pdpa', 
                         label: 'Legal Briefing: Execute PDPA & Cookie Consent Audit', 
                         cost: 0, energy: 25, 
+                        tradeoffTag: '⚖️ Compliance vs Tracking Loss',
                         desc: 'Audit web forms to earn $200 quarterly compliance bonus & avoid regulatory warnings.', 
-                        reward: { money: 200, ethics: 5, audit: 2, rep: 2 } 
+                        reward: { money: 200, ethics: 5, audit: 2, rep: 2 },
+                        orientPoints: { ethics: 4 }
                     }
                 ]
             },
@@ -870,22 +924,28 @@
                         id: 'agency_seo', 
                         label: 'Client Ticket: Technical SEO & Site Speed Audit', 
                         cost: 40, energy: 25, 
+                        tradeoffTag: '🔍 Long-Term SERP vs Instant Ads',
                         desc: 'Fix crawl errors using SEMrush/Ahrefs (-$40 tool fee) & collect $400 client project payout.', 
-                        reward: { money: 400, seo: 5, analytics: 2 } 
+                        reward: { money: 400, seo: 5, analytics: 2 },
+                        orientPoints: { owned: 2, ethics: 1 }
                     },
                     { 
                         id: 'agency_campaign', 
                         label: 'Agency Brief: TikTok Live Commerce Launch', 
                         cost: 120, energy: 35, 
+                        tradeoffTag: '🎬 Trend ROAS vs Creator Risk',
                         desc: 'Manage $120 creator affiliate budget & collect $650 agency management fee.', 
-                        risk: true, reward: { money: 650, content: 4, paidMedia: 3, rep: 2 } 
+                        risk: true, reward: { money: 650, content: 4, paidMedia: 3, rep: 2 },
+                        orientPoints: { performance: 4 }
                     },
                     { 
                         id: 'agency_dashboard', 
                         label: 'Executive Request: GA4 Looker Studio Dashboard', 
                         cost: 0, energy: 20, 
+                        tradeoffTag: '📊 Data Accuracy vs Client Speed',
                         desc: 'Build automated ROAS dashboard for client board to collect $300 reporting fee.', 
-                        reward: { money: 300, analytics: 5, audit: 2 } 
+                        reward: { money: 300, analytics: 5, audit: 2 },
+                        orientPoints: { owned: 3 }
                     }
                 ]
             },
@@ -898,22 +958,28 @@
                         id: 'creator_video', 
                         label: 'Production Brief: Sponsored Tech/Media Video', 
                         cost: 100, energy: 35, 
+                        tradeoffTag: '🎬 Sponsor Payout vs Brand Authenticity',
                         desc: 'Invest $100 in production gear/props to earn $350 sponsor payout & YouTube AdSense.', 
-                        reward: { money: 350, content: 5, ai: 2, rep: 2 } 
+                        reward: { money: 350, content: 5, ai: 2, rep: 2 },
+                        orientPoints: { performance: 2, ethics: 1 }
                     },
                     { 
                         id: 'creator_funnel', 
                         label: 'Product Launch: Monetize E-Book Strategy Guide', 
                         cost: 60, energy: 25, 
+                        tradeoffTag: '💌 Direct Owned Sales vs Rented Social',
                         desc: 'Pay $60 landing page & email funnel hosting to earn $500 in direct template sales.', 
-                        reward: { money: 500, crm: 4, seo: 2 } 
+                        reward: { money: 500, crm: 4, seo: 2 },
+                        orientPoints: { owned: 4 }
                     },
                     { 
                         id: 'creator_sponsorship', 
                         label: 'Contract Memo: Secure Long-Term Brand Affiliate Deal', 
                         cost: 0, energy: 20, 
+                        tradeoffTag: '⚖️ Affiliate Lock-In vs Creative Autonomy',
                         desc: 'Negotiate long-term brand affiliate contract yielding $600 payout.', 
-                        risk: true, reward: { money: 600, rep: 2, ethics: 2 } 
+                        risk: true, reward: { money: 600, rep: 2, ethics: 2 },
+                        orientPoints: { performance: 3 }
                     }
                 ]
             },
@@ -926,22 +992,28 @@
                         id: 'journo_investigate', 
                         label: 'Editor Request: Social Listening Investigation', 
                         cost: 30, energy: 30, 
+                        tradeoffTag: '⚖️ Uncovering Truth vs Tool Query Cost',
                         desc: 'Use Brandwatch/Zanroo (-$30 query fee) to publish piece with $250 syndication payout.', 
-                        reward: { money: 250, audit: 4, ethics: 3, rep: 2 } 
+                        reward: { money: 250, audit: 4, ethics: 3, rep: 2 },
+                        orientPoints: { ethics: 4 }
                     },
                     { 
                         id: 'journo_seo_article', 
                         label: 'Commission Brief: Long-Form Evergreen SEO Feature', 
                         cost: 0, energy: 25, 
+                        tradeoffTag: '🔍 Search Volume vs Viral Sensationalism',
                         desc: 'Write long-form search feature for major outlet to earn $300 writer stipend.', 
-                        reward: { money: 300, seo: 5, content: 3 } 
+                        reward: { money: 300, seo: 5, content: 3 },
+                        orientPoints: { owned: 3 }
                     },
                     { 
                         id: 'journo_factcheck', 
                         label: 'Grant Memo: AI Synthetic Media Fact-Check Investigation', 
                         cost: 0, energy: 20, 
+                        tradeoffTag: '🤖 Verification Rigor vs Fast Publishing',
                         desc: 'Verify viral synthetic media for media trust fund to earn $220 grant payout.', 
-                        reward: { money: 220, ai: 3, ethics: 5, rep: 2 } 
+                        reward: { money: 220, ai: 3, ethics: 5, rep: 2 },
+                        orientPoints: { ethics: 4, owned: 1 }
                     }
                 ]
             }
@@ -949,19 +1021,20 @@
 
         // Shared Actions
         const sharedActions = [
-            { id: 'generic_rest', label: 'Rest & Strategic Recovery', cost: 0, energy: -35, desc: 'Recharge mental stamina to avoid burnout.', reward: { energyGain: 35 } },
-            { id: 'generic_workshop', label: 'Attend Digital Strategy Masterclass', cost: 150, energy: 25, desc: 'Pay $150 registration fee to gain Skill Points across all 8 MarTech domains.', reward: { ai: 3, seo: 3, crm: 3, paidMedia: 3, rep: 2 } }
+            { id: 'generic_rest', label: 'Rest & Strategic Recovery', cost: 0, energy: -35, tradeoffTag: '🔋 Work-Life Balance vs Output', desc: 'Recharge mental stamina to avoid burnout.', reward: { energyGain: 35 } },
+            { id: 'generic_workshop', label: 'Attend Digital Strategy Masterclass', cost: 150, energy: 25, tradeoffTag: '🎓 Education Capital Investment', desc: 'Pay $150 registration fee to gain Skill Points across all 8 MarTech domains.', reward: { ai: 3, seo: 3, crm: 3, paidMedia: 3, rep: 2 } }
         ];
 
-        // ================= RANDOM SCENARIOS WITH DETAILED RATIONALE =================
+        // ================= RANDOM SCENARIOS WITH OVERT DILEMMAS & RATIONALE =================
         const scenariosDB = [
             {
                 title: "🚨 Crisis Alert: Viral Customer Review Backlash",
-                desc: "A disgruntled customer posted a video complaining about product defects, and it's trending on X (Twitter) in Thailand. How do you respond?",
+                desc: "A disgruntled customer posted a video complaining about product defects, and it's trending on X (Twitter) in Thailand. What is your primary strategic focus?",
                 choices: [
                     { 
-                        label: "Issue quick transparent apology & public investigation", 
+                        label: "Issue quick transparent apology & public investigation (Ethics Focus)", 
                         rationale: "Public transparency builds long-term brand equity and crisis resilience. Though investigating costs administrative fees (-$100), authentic customer care restores public trust.",
+                        orient: { ethics: 5 },
                         effect: state => { 
                             state.reputation += 4; 
                             state.stats.ethics += 3; 
@@ -975,8 +1048,9 @@
                         } 
                     },
                     { 
-                        label: "Delete negative comments and disable posting", 
+                        label: "Delete negative comments and disable posting (Censorship Attempt)", 
                         rationale: "Attempting to censor legitimate feedback triggers the 'Streisand Effect'. The public perceived your silence as dishonesty, severely destroying brand reputation.",
+                        orient: { performance: 1 },
                         effect: state => { 
                             state.reputation -= 8; 
                             return [
@@ -985,8 +1059,9 @@
                         } 
                     },
                     { 
-                        label: "Deploy targeted Meta ad campaign showcasing positive testimonials", 
+                        label: "Deploy targeted Meta ad campaign showcasing testimonials (Paid ROAS Focus)", 
                         rationale: "Using paid media advertising to drown out organic crisis complaints works short-term, but ad spend is expensive (-$300) and fails to address core operational quality.",
+                        orient: { performance: 4 },
                         effect: state => { 
                             state.money -= 300; 
                             state.weeklyExpenseTracker += 300;
@@ -1008,6 +1083,7 @@
                     {
                         label: "Pivot career track immediately to diversify client portfolio (-$500)",
                         rationale: "Recognizing sunk cost fallacy and pivoting early prevents prolonged cash drain. Retraining opens resilient income streams.",
+                        orient: { owned: 3, performance: 2 },
                         effect: state => {
                             if (state.money >= 500) {
                                 state.money -= 500;
@@ -1028,6 +1104,7 @@
                     {
                         label: "Take emergency loan & offer discounted audits to local SMEs",
                         rationale: "Offering short-term discounted audits maintains cash flow and builds community goodwill, preserving your freelance reputation.",
+                        orient: { ethics: 3 },
                         effect: state => {
                             state.money += 300;
                             state.weeklyIncomeTracker += 300;
@@ -1046,8 +1123,9 @@
                 desc: "A major algorithm change drastically cut creator payouts and organic reach across Bangkok digital agencies.",
                 choices: [
                     {
-                        label: "Build an owned email newsletter funnel on Hubspot/Klaviyo",
+                        label: "Build an owned email newsletter funnel on Hubspot/Klaviyo (Owned Media Focus)",
                         rationale: "Transitioning audience from rented social platforms to owned media channels protects your customer lifetime value (CLV) from algorithm dependency.",
+                        orient: { owned: 5 },
                         effect: state => {
                             state.money -= 120;
                             state.weeklyExpenseTracker += 120;
@@ -1061,8 +1139,9 @@
                         }
                     },
                     {
-                        label: "Double down on paid click ads to force social reach",
+                        label: "Double down on paid click ads to force social reach (Performance Focus)",
                         rationale: "Relying purely on paid ads without an owned email funnel burns budget rapidly with diminishing ROAS returns.",
+                        orient: { performance: 4 },
                         effect: state => {
                             state.money -= 250;
                             state.weeklyExpenseTracker += 250;
@@ -1082,6 +1161,7 @@
                     {
                         label: "Take mandatory rest week & hire a freelance assistant",
                         rationale: "Protecting stamina prevents total burnout collapse. Outsourcing minor admin tasks recovers mental capacity sustainably.",
+                        orient: { ethics: 2, owned: 2 },
                         effect: state => {
                             state.money -= 150;
                             state.weeklyExpenseTracker += 150;
@@ -1095,6 +1175,7 @@
                     {
                         label: "Push through exhaustion with energy drinks & double workload",
                         rationale: "Ignoring stamina thresholds risks campaign errors and severe performance drops.",
+                        orient: { performance: 2 },
                         effect: state => {
                             state.energy = Math.max(0, state.energy - 30);
                             state.reputation -= 4;
@@ -1113,6 +1194,7 @@
                     { 
                         label: "Audit content with AI & rebuild helpful search intent structure", 
                         rationale: "Adapting directly to search quality evaluator guidelines restores organic ranking parameters sustainably without burning extra capital.",
+                        orient: { owned: 3, ethics: 2 },
                         effect: state => { 
                             state.stats.seo += 4; 
                             state.stats.ai += 2; 
@@ -1125,6 +1207,7 @@
                     { 
                         label: "Shift budget aggressively into Meta & TikTok paid acquisition", 
                         rationale: "Buying performance ads offsets lost organic search volume, but raises Customer Acquisition Cost (CAC) significantly (-$250).",
+                        orient: { performance: 4 },
                         effect: state => { 
                             state.money -= 250; 
                             state.weeklyExpenseTracker += 250;
@@ -1144,6 +1227,7 @@
                     { 
                         label: "Hire legal tech expert to implement strict cookie consent & privacy policy", 
                         rationale: "Investing in compliance ($200 legal tech fee) mitigates massive statutory fines and proves your brand respects consumer data rights.",
+                        orient: { ethics: 5 },
                         effect: state => { 
                             state.money -= 200; 
                             state.weeklyExpenseTracker += 200;
@@ -1157,6 +1241,7 @@
                     { 
                         label: "Delay response and patch forms manually", 
                         rationale: "Failing to demonstrate formal PDPA compliance processes resulted in a regulatory warning and brand reputation penalty.",
+                        orient: { performance: 1 },
                         effect: state => { 
                             state.reputation -= 5; 
                             return [
@@ -1191,6 +1276,15 @@
             instructorCapTag: document.getElementById('instructor-cap-tag'),
             originTagDisplay: document.getElementById('origin-tag-display'),
             originDescDisplay: document.getElementById('origin-desc-display'),
+
+            // Strategic Orientation Profile UI
+            dominantOrientationTag: document.getElementById('dominant-orientation-tag'),
+            orientEthicsVal: document.getElementById('orient-ethics-val'),
+            orientEthicsBar: document.getElementById('orient-ethics-bar'),
+            orientPerformanceVal: document.getElementById('orient-performance-val'),
+            orientPerformanceBar: document.getElementById('orient-performance-bar'),
+            orientOwnedVal: document.getElementById('orient-owned-val'),
+            orientOwnedBar: document.getElementById('orient-owned-bar'),
             
             energyText: document.getElementById('energy-text'),
             energyBar: document.getElementById('energy-bar'),
@@ -1326,9 +1420,9 @@
                 `📜 Origin Story: ${originData.name}\n` +
                 `${originData.desc}\n\n` +
                 `📊 Research Consent: ${gameState.researchConsent ? "ACCEPTED (EdTech Telemetry Active)" : "OPTED OUT (Telemetry Disabled)"}\n\n` +
-                "🎓 RULES & MASTERY CHALLENGES:\n" +
-                "1. Diversify your strategic actions. Repeating actions back-to-back yields 50% diminishing Skill Points!\n" +
-                "2. Skill Points build your 8 Core Competencies (Audit, SEO, AI, etc.).\n" +
+                "🎓 RULES & OVERT TRADE-OFFS:\n" +
+                "1. Pay attention to Trade-Off Badges on each card before taking action.\n" +
+                "2. Track your Strategic Philosophy Radar on the sidebar to see how your decisions shape your professional identity.\n" +
                 "3. Reaching badge thresholds unlocks Concept Quizzes. Pass them to earn verifiable badges!"
             );
         }
@@ -1337,6 +1431,11 @@
         function updateUI() {
             const careerData = careersDB[gameState.career];
             const originData = originsDB[gameState.origin] || originsDB['bjm_student'];
+
+            // Ensure orientation object exists
+            if (!gameState.orientation) {
+                gameState.orientation = { ethics: 10, performance: 10, owned: 10 };
+            }
 
             // Header
             UI.playerNameDisplay.textContent = gameState.playerName;
@@ -1350,6 +1449,33 @@
             // Backstory Banner
             UI.originTagDisplay.textContent = originData.name;
             UI.originDescDisplay.textContent = originData.desc;
+
+            // Strategic Orientation Radar Bars
+            const eth = gameState.orientation.ethics || 0;
+            const perf = gameState.orientation.performance || 0;
+            const own = gameState.orientation.owned || 0;
+            const totalOrient = Math.max(1, eth + perf + own);
+
+            UI.orientEthicsVal.textContent = eth;
+            UI.orientEthicsBar.style.width = `${Math.min(100, (eth / totalOrient) * 100)}%`;
+
+            UI.orientPerformanceVal.textContent = perf;
+            UI.orientPerformanceBar.style.width = `${Math.min(100, (perf / totalOrient) * 100)}%`;
+
+            UI.orientOwnedVal.textContent = own;
+            UI.orientOwnedBar.style.width = `${Math.min(100, (own / totalOrient) * 100)}%`;
+
+            // Calculate dominant archetype
+            if (eth >= perf && eth >= own) {
+                UI.dominantOrientationTag.textContent = "Brand & Ethics Focus";
+                UI.dominantOrientationTag.className = "text-[9px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-mono";
+            } else if (perf >= eth && perf >= own) {
+                UI.dominantOrientationTag.textContent = "ROAS Performance Focus";
+                UI.dominantOrientationTag.className = "text-[9px] bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded font-mono";
+            } else {
+                UI.dominantOrientationTag.textContent = "MarTech & Owned Focus";
+                UI.dominantOrientationTag.className = "text-[9px] bg-indigo-500/20 text-indigo-300 px-1.5 py-0.5 rounded font-mono";
+            }
 
             // Vitals
             UI.energyText.textContent = `${gameState.energy} / 100`;
@@ -1438,6 +1564,10 @@
                         </h4>
                         ${isShared ? '<span class="text-[9px] bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded">Shared</span>' : ''}
                     </div>
+
+                    <!-- Overt Trade-off Badge -->
+                    ${action.tradeoffTag ? `<div class="mb-2"><span class="text-[10px] bg-amber-500/10 border border-amber-500/30 text-amber-300 px-2 py-0.5 rounded font-mono font-semibold">${action.tradeoffTag}</span></div>` : ''}
+
                     <p class="text-xs text-slate-400 mb-2 leading-relaxed">${action.desc}</p>
                     
                     <div class="flex flex-wrap gap-1 mb-2">
@@ -1483,6 +1613,15 @@
             const isRepeat = gameState.lastActionId === action.id && action.id !== 'generic_rest';
             const multiplier = isRepeat ? 0.5 : 1.0;
             gameState.lastActionId = action.id;
+
+            // Update Strategic Orientation Profile
+            if (action.orientPoints) {
+                for (const [orientKey, pts] of Object.entries(action.orientPoints)) {
+                    if (gameState.orientation[orientKey] !== undefined) {
+                        gameState.orientation[orientKey] += pts;
+                    }
+                }
+            }
 
             let success = true;
             if (action.risk) {
@@ -1604,6 +1743,12 @@
                 btn.onclick = () => {
                     UI.scenarioModal.classList.add('hidden');
                     
+                    if (choice.orient) {
+                        for (const [oKey, val] of Object.entries(choice.orient)) {
+                            if (gameState.orientation[oKey] !== undefined) gameState.orientation[oKey] += val;
+                        }
+                    }
+
                     const impactList = choice.effect(gameState);
                     gameState.actionCounts.crisesSolved = (gameState.actionCounts.crisesSolved || 0) + 1;
 
@@ -1791,6 +1936,7 @@
                 if (loadedState && loadedState.playerName && loadedState.stats) {
                     gameState = loadedState;
                     if (!gameState.origin) gameState.origin = 'bjm_student';
+                    if (!gameState.orientation) gameState.orientation = { ethics: 10, performance: 10, owned: 10 };
                     if (gameState.researchConsent === undefined) gameState.researchConsent = true;
                     if (!gameState.telemetryLog) gameState.telemetryLog = [];
                     recordTelemetry("save_loaded", { week: gameState.week });
@@ -1815,6 +1961,7 @@
                 b: gameState.unlockedBadges.length,
                 m: gameState.money,
                 r: gameState.reputation,
+                orient: gameState.orientation,
                 consent: gameState.researchConsent,
                 totAct: gameState.actionCounts?.total || 0,
                 pivots: gameState.actionCounts?.careerPivots || 0,
