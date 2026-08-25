@@ -33,7 +33,7 @@
             <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-2">
                 JM 466 <span class="text-blue-500">Digital Strategy</span> Sim
             </h1>
-            <p class="text-slate-400 max-w-xl text-xs sm:text-sm mb-6 leading-relaxed">
+            <p class="text-slate-400 max-w-xl text-xs sm:text-sm mb-5 leading-relaxed">
                 Step into the shoes of a modern BJM digital strategist in Bangkok. Manage real client briefs, pitch executive retainers, handle viral crises, and navigate AI disruption.
             </p>
 
@@ -54,7 +54,7 @@
                     </select>
                 </div>
 
-                <div class="mb-6">
+                <div class="mb-4">
                     <label for="origin-story" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Strategist Origin & Background</label>
                     <select id="origin-story" class="w-full px-4 py-2.5 bg-slate-900 border border-slate-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium text-sm">
                         <option value="bjm_student">🎓 Current BJM Senior (Standard JM 466 Track)</option>
@@ -62,6 +62,17 @@
                         <option value="agency_locked" disabled>🔒 Regional Agency Partner Track (Future Expansion)</option>
                         <option value="media_lead_locked" disabled>🔒 Senior Policy Fellow Track (Future Expansion)</option>
                     </select>
+                </div>
+
+                <!-- Research Consent & Opt-Out Toggle Box -->
+                <div class="mb-6 p-3 bg-slate-900/90 border border-slate-700 rounded-lg">
+                    <label class="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                        <input type="checkbox" id="research-consent-checkbox" checked class="mt-0.5 rounded border-slate-700 bg-slate-950 text-blue-600 focus:ring-blue-500">
+                        <span>
+                            <strong class="text-white font-semibold block mb-0.5">📊 Informed Research Consent (EdTech Telemetry)</strong>
+                            Allow anonymous decision logs to be recorded for academic research on gamified strategy education. You can uncheck this box to opt out at any time without penalty.
+                        </span>
+                    </label>
                 </div>
 
                 <div class="flex gap-3">
@@ -105,6 +116,9 @@
                         </div>
                         <p id="money-display" class="text-base sm:text-xl font-bold text-emerald-400 font-mono">$1,500</p>
                     </div>
+                    <button id="open-research-btn" class="bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg text-xs font-bold transition">
+                        📊 <span class="hidden sm:inline">Research Log</span>
+                    </button>
                     <button id="open-dossier-btn" class="bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg text-xs font-bold transition">
                         📩 <span class="hidden sm:inline">Dossiers</span>
                     </button>
@@ -211,6 +225,43 @@
             </footer>
         </div>
 
+    </div>
+
+    <!-- ================= RESEARCH TELEMETRY EXPORT MODAL ================= -->
+    <div id="research-modal" class="hidden fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 z-50">
+        <div class="bg-slate-900 border border-emerald-500/40 rounded-2xl shadow-2xl p-6 w-full max-w-lg text-left">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-800 pb-3">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    📊 Academic Research Telemetry Log
+                </h3>
+                <button id="close-research-btn" class="text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+            </div>
+
+            <p class="text-xs text-slate-300 mb-2 leading-relaxed">
+                This log tracks timestamped actions, quiz attempts, and strategic choices for research analysis in higher education gamification and EdTech.
+            </p>
+
+            <div class="p-3 bg-slate-950 border border-slate-800 rounded-lg mb-4 text-xs">
+                <span id="consent-status-display" class="font-bold">Consent Status: Checking...</span>
+            </div>
+
+            <div class="flex gap-2 mb-4">
+                <button id="download-csv-btn" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 px-3 rounded-lg transition">
+                    📥 Download CSV Spreadsheet
+                </button>
+                <button id="download-json-btn" class="flex-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-xs py-2.5 px-3 rounded-lg transition">
+                    📄 Download JSON Dataset
+                </button>
+            </div>
+
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 max-h-48 overflow-y-auto font-mono text-[11px] text-slate-400 space-y-1 mb-4" id="telemetry-preview-box">
+                <!-- Log entries preview -->
+            </div>
+
+            <div class="flex justify-end">
+                <button id="close-research-btn-footer" class="bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold px-4 py-2 rounded-lg">Close</button>
+            </div>
+        </div>
     </div>
 
     <!-- ================= CLIENT DOSSIERS & INBOX MODAL ================= -->
@@ -498,6 +549,7 @@
             playerName: '',
             career: 'freelance',
             origin: 'bjm_student',
+            researchConsent: true,  // Opt-in / Opt-out consent flag for EdTech telemetry
             money: 1500,
             reputation: 15,
             energy: 100,
@@ -517,8 +569,21 @@
             unlockedBadges: [],
             pendingQuizBadge: null,
             lastActionId: null,
-            actionCounts: {}
+            actionCounts: {},
+            telemetryLog: []     // Timestamped learning analytics dataset for research paper
         };
+
+        // Telemetry logger helper - respects user researchConsent
+        function recordTelemetry(eventType, details) {
+            if (!gameState.researchConsent) return; // Opted-out
+            if (!gameState.telemetryLog) gameState.telemetryLog = [];
+            gameState.telemetryLog.push({
+                time: new Date().toISOString(),
+                week: gameState.week,
+                event: eventType,
+                details: details
+            });
+        }
 
         // ================= SYLLABUS WEEKLY NEWS BRIEFS =================
         const weeklyBriefs = {
@@ -937,6 +1002,111 @@
                 ]
             },
             {
+                title: "💥 Disruption: Primary Client Abrupt Bankruptcy",
+                desc: "Your biggest retainer client abruptly declared insolvency and cancelled all upcoming contracts! Your active track revenue dropped dramatically.",
+                choices: [
+                    {
+                        label: "Pivot career track immediately to diversify client portfolio (-$500)",
+                        rationale: "Recognizing sunk cost fallacy and pivoting early prevents prolonged cash drain. Retraining opens resilient income streams.",
+                        effect: state => {
+                            if (state.money >= 500) {
+                                state.money -= 500;
+                                state.weeklyExpenseTracker += 500;
+                                state.actionCounts.careerPivots = (state.actionCounts.careerPivots || 0) + 1;
+                                return [
+                                    { type: 'bad', text: '💰 -$500 Pivot Cost' },
+                                    { type: 'good', text: '🔄 Agile Strategic Pivot' }
+                                ];
+                            } else {
+                                state.reputation -= 3;
+                                return [
+                                    { type: 'bad', text: '💰 Insufficient capital to pivot (-3 Rep)' }
+                                ];
+                            }
+                        }
+                    },
+                    {
+                        label: "Take emergency loan & offer discounted audits to local SMEs",
+                        rationale: "Offering short-term discounted audits maintains cash flow and builds community goodwill, preserving your freelance reputation.",
+                        effect: state => {
+                            state.money += 300;
+                            state.weeklyIncomeTracker += 300;
+                            state.stats.audit += 4;
+                            state.reputation += 2;
+                            return [
+                                { type: 'good', text: '💰 +$300 Emergency Revenue' },
+                                { type: 'good', text: '📊 +4 Audit Skill' }
+                            ];
+                        }
+                    }
+                ]
+            },
+            {
+                title: "📉 Platform Policy Shift: Social Media Demonetization",
+                desc: "A major algorithm change drastically cut creator payouts and organic reach across Bangkok digital agencies.",
+                choices: [
+                    {
+                        label: "Build an owned email newsletter funnel on Hubspot/Klaviyo",
+                        rationale: "Transitioning audience from rented social platforms to owned media channels protects your customer lifetime value (CLV) from algorithm dependency.",
+                        effect: state => {
+                            state.money -= 120;
+                            state.weeklyExpenseTracker += 120;
+                            state.stats.crm += 5;
+                            state.stats.seo += 2;
+                            return [
+                                { type: 'bad', text: '💰 -$120 CRM Tool Fee' },
+                                { type: 'good', text: '💌 +5 CRM Skill' },
+                                { type: 'good', text: '🔍 +2 SEO Skill' }
+                            ];
+                        }
+                    },
+                    {
+                        label: "Double down on paid click ads to force social reach",
+                        rationale: "Relying purely on paid ads without an owned email funnel burns budget rapidly with diminishing ROAS returns.",
+                        effect: state => {
+                            state.money -= 250;
+                            state.weeklyExpenseTracker += 250;
+                            state.stats.paidMedia += 2;
+                            return [
+                                { type: 'bad', text: '💰 -$250 Wasted Ad Spend' },
+                                { type: 'good', text: '📈 +2 Paid Media' }
+                            ];
+                        }
+                    }
+                ]
+            },
+            {
+                title: "⚡ Burnout & Mental Capacity Exhaustion",
+                desc: "Overworking on high-stakes client pitches without resting led to extreme fatigue and a missed client milestone.",
+                choices: [
+                    {
+                        label: "Take mandatory rest week & hire a freelance assistant",
+                        rationale: "Protecting stamina prevents total burnout collapse. Outsourcing minor admin tasks recovers mental capacity sustainably.",
+                        effect: state => {
+                            state.money -= 150;
+                            state.weeklyExpenseTracker += 150;
+                            state.energy = Math.min(100, state.energy + 40);
+                            return [
+                                { type: 'bad', text: '💰 -$150 Assistant Cost' },
+                                { type: 'good', text: '⚡ +40 Stamina Recovery' }
+                            ];
+                        }
+                    },
+                    {
+                        label: "Push through exhaustion with energy drinks & double workload",
+                        rationale: "Ignoring stamina thresholds risks campaign errors and severe performance drops.",
+                        effect: state => {
+                            state.energy = Math.max(0, state.energy - 30);
+                            state.reputation -= 4;
+                            return [
+                                { type: 'bad', text: '⚡ -30 Stamina Collapse' },
+                                { type: 'bad', text: '⭐ -4 Reputation Penalty' }
+                            ];
+                        }
+                    }
+                ]
+            },
+            {
                 title: "🌐 Market Disruption: Google Generative AI Overview Shift",
                 desc: "Google rolled out AI-generated answers above search results in Thailand, dropping organic CTR by 25% overnight!",
                 choices: [
@@ -967,7 +1137,7 @@
                     }
                 ]
             },
-            {
+            { 
                 title: "⚖️ Legal Notice: PDPA Data Privacy Compliance Audit",
                 desc: "The Personal Data Protection Committee requested proof of explicit consent management for your lead capture forms.",
                 choices: [
@@ -995,36 +1165,6 @@
                         } 
                     }
                 ]
-            },
-            {
-                title: "🕵️ Investigation: Influencer Fake Follower Scandal",
-                desc: "A key creator hired for an upcoming campaign was accused of buying 80% bot followers on Instagram.",
-                choices: [
-                    {
-                        label: "Conduct audit with Zanroo/Brandwatch & terminate contract",
-                        rationale: "Shedding fraudulent partners preserves brand credibility and reinforces data-driven influencer selection.",
-                        effect: state => {
-                            state.stats.audit += 3;
-                            state.reputation += 3;
-                            return [
-                                { type: 'good', text: '📊 +3 Audit Skill' },
-                                { type: 'good', text: '⭐ +3 Reputation' }
-                            ];
-                        }
-                    },
-                    {
-                        label: "Proceed with campaign regardless to hit short-term impression target",
-                        rationale: "Short-term vanity metrics were met, but media analysts called out the bot engagement, hurting brand trust.",
-                        effect: state => {
-                            state.money += 200;
-                            state.reputation -= 4;
-                            return [
-                                { type: 'good', text: '💰 +$200 Revenue' },
-                                { type: 'bad', text: '⭐ -4 Reputation' }
-                            ];
-                        }
-                    }
-                ]
             }
         ];
 
@@ -1038,6 +1178,7 @@
             playerNameInput: document.getElementById('player-name'),
             careerChoiceSelect: document.getElementById('career-choice'),
             originStorySelect: document.getElementById('origin-story'),
+            researchConsentCheckbox: document.getElementById('research-consent-checkbox'),
             startGameBtn: document.getElementById('start-game-btn'),
             openLoadStartBtn: document.getElementById('open-load-start-btn'),
             
@@ -1068,6 +1209,16 @@
             colActions: document.getElementById('col-actions'),
             colVitals: document.getElementById('col-vitals'),
             colLog: document.getElementById('col-log'),
+
+            // Research Telemetry Modal
+            openResearchBtn: document.getElementById('open-research-btn'),
+            researchModal: document.getElementById('research-modal'),
+            closeResearchBtn: document.getElementById('close-research-btn'),
+            closeResearchBtnFooter: document.getElementById('close-research-btn-footer'),
+            downloadCsvBtn: document.getElementById('download-csv-btn'),
+            downloadJsonBtn: document.getElementById('download-json-btn'),
+            telemetryPreviewBox: document.getElementById('telemetry-preview-box'),
+            consentStatusDisplay: document.getElementById('consent-status-display'),
 
             // Save/Load Modal
             openSaveBtn: document.getElementById('open-save-btn'),
@@ -1151,6 +1302,7 @@
             gameState.playerName = name;
             gameState.career = UI.careerChoiceSelect.value;
             gameState.origin = UI.originStorySelect.value;
+            gameState.researchConsent = UI.researchConsentCheckbox.checked;
 
             // Apply origin background bonuses with fallback
             const originData = originsDB[gameState.origin] || originsDB['bjm_student'];
@@ -1158,6 +1310,8 @@
                 gameState.stats[stat] += bonus;
             }
             
+            recordTelemetry("game_init", { playerName: name, career: gameState.career, origin: gameState.origin, researchConsent: gameState.researchConsent });
+
             logConsole(`Welcome, ${name}! Your BJM JM466 Digital Strategy Journey begins as a ${careersDB[gameState.career].title}.`);
             logConsole(`Origin Story Applied: ${originData.name}.`);
             logConsole(weeklyBriefs[1] || "Week 1 underway.");
@@ -1171,6 +1325,7 @@
                 `Hello ${name}! You are starting as a ${careersDB[gameState.career].title}.\n\n` +
                 `📜 Origin Story: ${originData.name}\n` +
                 `${originData.desc}\n\n` +
+                `📊 Research Consent: ${gameState.researchConsent ? "ACCEPTED (EdTech Telemetry Active)" : "OPTED OUT (Telemetry Disabled)"}\n\n` +
                 "🎓 RULES & MASTERY CHALLENGES:\n" +
                 "1. Diversify your strategic actions. Repeating actions back-to-back yields 50% diminishing Skill Points!\n" +
                 "2. Skill Points build your 8 Core Competencies (Audit, SEO, AI, etc.).\n" +
@@ -1239,9 +1394,17 @@
             // Badge Count Pill
             UI.badgeCountPill.textContent = `${gameState.unlockedBadges.length}/${badgesDB.length}`;
 
-            // Sync Save State
+            // Research Consent Display Status
+            if (UI.consentStatusDisplay) {
+                UI.consentStatusDisplay.innerHTML = gameState.researchConsent 
+                    ? '<span class="text-emerald-400">✅ Research Consent Active: Telemetry logging enabled.</span>' 
+                    : '<span class="text-rose-400">❌ Research Consent Opted Out: Telemetry logging disabled.</span>';
+            }
+
+            // Sync Save State & Telemetry Preview
             updateVerificationCode();
             generateSaveCode();
+            renderTelemetryPreview();
         }
 
         function renderActionCard(action, isShared) {
@@ -1250,7 +1413,6 @@
             const isRepeat = gameState.lastActionId === action.id && action.id !== 'generic_rest';
             const multiplier = isRepeat ? 0.5 : 1.0;
 
-            // Build dynamic skill points display tag
             let skillGainTags = [];
             if (action.reward) {
                 ['audit', 'seo', 'ai', 'crm', 'paidMedia', 'analytics', 'content', 'ethics'].forEach(skill => {
@@ -1314,21 +1476,18 @@
                 return;
             }
 
-            // Deduct costs
             gameState.energy -= action.energy;
             gameState.money -= action.cost;
             if (action.cost > 0) gameState.weeklyExpenseTracker += action.cost;
 
-            // Diminishing returns calculation
             const isRepeat = gameState.lastActionId === action.id && action.id !== 'generic_rest';
             const multiplier = isRepeat ? 0.5 : 1.0;
             gameState.lastActionId = action.id;
 
-            // Risk calculation
             let success = true;
             if (action.risk) {
                 const avgSkill = (gameState.stats.audit + gameState.stats.seo + gameState.stats.content + gameState.stats.ai) / 4;
-                const successChance = Math.min(0.9, 0.4 + (avgSkill / 100)); // 40% to 90% chance
+                const successChance = Math.min(0.9, 0.4 + (avgSkill / 100));
                 if (Math.random() > successChance) {
                     success = false;
                 }
@@ -1339,6 +1498,7 @@
             if (!success) {
                 gameState.reputation = Math.max(0, gameState.reputation - 2);
                 logMsg += `❌ Campaign failed due to low skill preparation! Lost $${action.cost} & -2 Rep.`;
+                recordTelemetry("action_failed", { actionId: action.id, label: action.label, cost: action.cost });
             } else {
                 if (action.reward) {
                     if (action.reward.money) {
@@ -1355,7 +1515,6 @@
                         logMsg += `Recovered stamina. `;
                     }
 
-                    // Skills with multiplier
                     ['audit', 'seo', 'ai', 'crm', 'paidMedia', 'analytics', 'content', 'ethics'].forEach(skill => {
                         if (action.reward[skill]) {
                             const gained = Math.round(action.reward[skill] * multiplier);
@@ -1364,9 +1523,9 @@
                         }
                     });
                 }
+                recordTelemetry("action_success", { actionId: action.id, label: action.label, isRepeat: isRepeat });
             }
 
-            // Action Tracking
             gameState.actionCounts.total = (gameState.actionCounts.total || 0) + 1;
             gameState.actionCounts[action.id] = (gameState.actionCounts[action.id] || 0) + 1;
 
@@ -1398,6 +1557,8 @@
 
             gameState.energy = Math.min(100, gameState.energy + 50);
             gameState.week++;
+
+            recordTelemetry("week_advanced", { week: gameState.week, netChange: netChange, endingBalance: gameState.money });
 
             logConsole(`Advanced to Semester Week ${gameState.week}. Net balance change: ${netChange >= 0 ? '+' : ''}$${netChange}.`);
 
@@ -1445,6 +1606,8 @@
                     
                     const impactList = choice.effect(gameState);
                     gameState.actionCounts.crisesSolved = (gameState.actionCounts.crisesSolved || 0) + 1;
+
+                    recordTelemetry("scenario_choice", { title: scenario.title, choice: choice.label });
 
                     showScenarioOutcome(scenario.title, choice.label, choice.rationale, impactList);
 
@@ -1510,9 +1673,11 @@
                     if (opt.correct) {
                         gameState.unlockedBadges.push(badge.id);
                         gameState.reputation += 3;
+                        recordTelemetry("quiz_result", { badgeId: badge.id, result: "pass", selected: opt.text });
                         logConsole(`🏆 QUIZ PASSED! Unlocked Badge: ${badge.name} (+3 Rep)`);
                         showAlert(`🏆 Mastery Proven: ${badge.name}`, `Correct! ${badge.quiz.explain}\n\nBadge officially awarded!`);
                     } else {
+                        recordTelemetry("quiz_result", { badgeId: badge.id, result: "fail", selected: opt.text });
                         logConsole(`❌ QUIZ FAILED for ${badge.name}. Review course materials!`);
                         showAlert(`Quiz Attempt Failed`, `Incorrect option selected.\n\n💡 Explanation: ${badge.quiz.explain}\n\nBuild your skills and try again!`);
                     }
@@ -1556,6 +1721,60 @@
             });
         }
 
+        // ================= RESEARCH & TELEMETRY EXPORT =================
+        function renderTelemetryPreview() {
+            if (!UI.telemetryPreviewBox) return;
+            UI.telemetryPreviewBox.innerHTML = '';
+            const logs = gameState.telemetryLog || [];
+            if (!gameState.researchConsent) {
+                UI.telemetryPreviewBox.innerHTML = '<p class="text-rose-400 italic">Research telemetry is currently OPTED OUT. No data is being recorded.</p>';
+                return;
+            }
+            if (logs.length === 0) {
+                UI.telemetryPreviewBox.innerHTML = '<p class="text-slate-500 italic">No telemetry events logged yet.</p>';
+                return;
+            }
+            logs.slice(-15).reverse().forEach(entry => {
+                const p = document.createElement('p');
+                p.textContent = `[W${entry.week}] ${entry.event}: ${JSON.stringify(entry.details)}`;
+                UI.telemetryPreviewBox.appendChild(p);
+            });
+        }
+
+        function downloadCSVTelemetry() {
+            if (!gameState.researchConsent) {
+                showAlert("Opted Out", "Telemetry logging was opted out for this session.");
+                return;
+            }
+            const logs = gameState.telemetryLog || [];
+            if (logs.length === 0) {
+                showAlert("No Data", "No session telemetry logged yet.");
+                return;
+            }
+            let csvContent = "data:text/csv;charset=utf-8,Timestamp,StudentName,Week,EventType,Details\n";
+            logs.forEach(log => {
+                const detailsStr = JSON.stringify(log.details).replace(/"/g, '""');
+                csvContent += `"${log.time}","${gameState.playerName}",${log.week},"${log.event}","${detailsStr}"\n`;
+            });
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `BJM_JM466_Research_${gameState.playerName.replace(/\s+/g, '_')}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function downloadJSONTelemetry() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(gameState, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `BJM_JM466_FullDataset_${gameState.playerName.replace(/\s+/g, '_')}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
         // ================= SAVE & LOAD STATE MANAGEMENT =================
         function generateSaveCode() {
             const raw = JSON.stringify(gameState);
@@ -1572,6 +1791,9 @@
                 if (loadedState && loadedState.playerName && loadedState.stats) {
                     gameState = loadedState;
                     if (!gameState.origin) gameState.origin = 'bjm_student';
+                    if (gameState.researchConsent === undefined) gameState.researchConsent = true;
+                    if (!gameState.telemetryLog) gameState.telemetryLog = [];
+                    recordTelemetry("save_loaded", { week: gameState.week });
                     logConsole(`Loaded save game for ${gameState.playerName} (Week ${gameState.week}).`);
                     updateUI();
                     screens.start.classList.remove('active');
@@ -1593,6 +1815,11 @@
                 b: gameState.unlockedBadges.length,
                 m: gameState.money,
                 r: gameState.reputation,
+                consent: gameState.researchConsent,
+                totAct: gameState.actionCounts?.total || 0,
+                pivots: gameState.actionCounts?.careerPivots || 0,
+                crises: gameState.actionCounts?.crisesSolved || 0,
+                stats: gameState.stats,
                 h: btoa(`${gameState.playerName}-${gameState.unlockedBadges.length}-${gameState.week}`)
             };
             UI.verificationCodeInput.value = `JM466-VERIFY-${btoa(JSON.stringify(payload))}`;
@@ -1655,8 +1882,11 @@
 
             gameState.money -= 500;
             gameState.weeklyExpenseTracker += 500;
+            const oldCareer = gameState.career;
             gameState.career = newCareer;
             gameState.actionCounts.careerPivots = (gameState.actionCounts.careerPivots || 0) + 1;
+
+            recordTelemetry("career_pivot", { from: oldCareer, to: newCareer });
 
             logConsole(`Pivoted career track to ${careersDB[newCareer].title} (-$500).`);
             UI.careerModal.classList.add('hidden');
@@ -1679,6 +1909,15 @@
         });
         UI.closeBadgesBtn.addEventListener('click', () => UI.badgesModal.classList.add('hidden'));
         UI.closeBadgesBtnFooter.addEventListener('click', () => UI.badgesModal.classList.add('hidden'));
+
+        UI.openResearchBtn.addEventListener('click', () => {
+            renderTelemetryPreview();
+            UI.researchModal.classList.remove('hidden');
+        });
+        UI.closeResearchBtn.addEventListener('click', () => UI.researchModal.classList.add('hidden'));
+        UI.closeResearchBtnFooter.addEventListener('click', () => UI.researchModal.classList.add('hidden'));
+        UI.downloadCsvBtn.addEventListener('click', downloadCSVTelemetry);
+        UI.downloadJsonBtn.addEventListener('click', downloadJSONTelemetry);
 
         UI.openSaveBtn.addEventListener('click', () => {
             generateSaveCode();
